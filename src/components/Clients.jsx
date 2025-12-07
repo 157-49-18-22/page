@@ -13,7 +13,9 @@ const Clients = () => {
         { name: 'Tech9', logo: '/Tech9.jpg', isImage: true },
         { name: 'Tvara', logo: '/Tvara.png', isImage: true },
         { name: 'Magadh University Info', logo: '/Magad.png', isImage: true },
-        { name: 'NTPC', logo: '/Ntpc.png', isImage: true }
+        { name: 'NTPC', logo: '/Ntpc.png', isImage: true },
+        { name: 'JMS CRM', logo: '/Jms.png', isImage: true },
+        { name: 'Maydiv CRM', logo: '/Crm.png', isImage: true }
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);

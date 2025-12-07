@@ -3,7 +3,7 @@ import './Clients.css';
 
 const Clients = () => {
     const clients = [
-        { name: 'Bajaj Finserve', logo: '/Bajaj.jpg', isImage: true },
+        { name: 'Bajaj Finserv', logo: '/Bajaj.jpg', isImage: true },
         { name: 'TMSquare', logo: '/TM.png', isImage: true },
         { name: 'JK Homes', logo: '/JK.png', isImage: true },
         { name: 'Fika', logo: '/Fika.png', isImage: true },

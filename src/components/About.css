@@ -54,12 +54,39 @@
     margin-bottom: var(--spacing-2xl);
 }
 
+/* Premium Core Expertise Section */
 .expertise-section {
     background: var(--white);
     border-radius: var(--radius-xl);
     padding: var(--spacing-xl);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-xl);
     border-left: 4px solid var(--primary-blue);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expertise-section:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-2xl);
+}
+
+/* Subtle gradient background on hover */
+.expertise-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.expertise-section:hover::before {
+    opacity: 1;
 }
 
 .expertise-title {
@@ -67,30 +94,77 @@
     font-weight: 700;
     color: var(--gray-900);
     margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
 }
 
 .expertise-list {
     list-style: none;
+    position: relative;
+    z-index: 1;
 }
 
 .expertise-item {
     font-size: var(--font-size-base);
     color: var(--gray-700);
     margin-bottom: var(--spacing-sm);
-    padding-left: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    padding-left: 3rem;
+    /* Space for custom bullet */
     position: relative;
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
+    transition: all 0.3s ease;
+    border-radius: var(--radius-md);
+    background: transparent;
+    cursor: default;
 }
 
+/* Hover Effect for List Items */
+.expertise-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateX(10px);
+    color: var(--primary-blue-dark);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Custom Animated Bullet */
 .expertise-bullet {
     position: absolute;
-    left: 0;
-    color: var(--primary-blue);
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    line-height: 1;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
 }
+
+.expertise-item:hover .expertise-bullet {
+    background: var(--accent-purple);
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+}
+
+/* Connecting line effect (optional, keeps lists clean) */
+.expertise-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(1rem + 3px);
+    /* Center of bullet width 6px + left 1rem approx */
+    top: calc(50% + 8px);
+    height: calc(100% + var(--spacing-sm) - 16px);
+    width: 2px;
+    background: var(--gray-200);
+    transition: background 0.3s ease;
+    opacity: 0;
+    /* Hidden by default, enable on hover logic if needed. keeping it clean for now */
+}
+
 
 .expertise-item:last-child {
     margin-bottom: 0;

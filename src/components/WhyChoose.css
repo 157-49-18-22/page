@@ -9,6 +9,7 @@
     margin-top: var(--spacing-2xl);
 }
 
+/* Premium Animation Styles (Matching Services Section) */
 .reason-card {
     background: var(--white);
     border-radius: var(--radius-xl);
@@ -16,46 +17,81 @@
     text-align: center;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--gray-200);
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .reason-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+    inset: 0;
+    border-radius: var(--radius-xl);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
-    transition: opacity var(--transition-base);
-    z-index: 0;
-}
-
-.reason-card:hover::before {
-    opacity: 0.05;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .reason-card:hover {
-    transform: translateY(-8px);
+    background: rgba(79, 70, 229, 0.03);
+    /* Subtle tint on hover */
+    transform: translateY(-5px) scale(1.02);
     box-shadow: var(--shadow-2xl);
-    border-color: var(--primary-blue-light);
+    border-color: transparent;
+    /* Move visual border to pseudo-element */
+}
+
+.reason-card:hover::before {
+    opacity: 1;
 }
 
 .reason-content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 .reason-title {
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--gray-900);
     line-height: 1.4;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+    display: inline-block;
+    /* Needed for width animation on title */
+}
+
+.reason-card:hover .reason-title {
+    color: var(--primary-blue);
+}
+
+.reason-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    /* Center alignment start */
+    transform: translateX(-50%);
+    /* Actually center it */
+    width: 40px;
+    height: 2px;
+    background: var(--primary-blue);
+    opacity: 0.5;
+    transition: width 0.3s ease;
+}
+
+.reason-card:hover .reason-title::after {
+    width: 100%;
 }
 
 /* Responsive Design */
@@ -73,6 +109,17 @@
 
     .reason-card {
         padding: var(--spacing-lg);
+    }
+
+    /* Touch optimization */
+    .reason-card:active {
+        transform: scale(0.98);
+    }
+
+    .reason-card:hover .reason-title::after,
+    .reason-card:active .reason-title::after {
+        width: 60px;
+        /* Restrict width expansion on mobile */
     }
 
     .reason-title {

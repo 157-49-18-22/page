@@ -18,51 +18,93 @@
     gap: var(--spacing-xl);
 }
 
+/* Updated Inner Items with Premium Animation */
 .company-card {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--gray-100);
-    transition: all var(--transition-base);
-    background: var(--gray-50);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: 1px solid transparent;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.company-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
+    transition: opacity 0.4s ease;
 }
 
 .company-card:hover {
-    background: var(--white);
-    border-color: var(--primary-blue);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    background: rgba(79, 70, 229, 0.03);
+    /* Very subtle primary tint */
+    transform: translateY(-5px) scale(1.02);
+}
+
+.company-card:hover::before {
+    opacity: 1;
 }
 
 .company-title {
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--gray-900);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+    transition: color 0.3s ease;
+}
+
+.company-card:hover .company-title {
+    color: var(--primary-blue);
+}
+
+.company-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-blue);
+    opacity: 0.5;
+    transition: width 0.3s ease;
+}
+
+.company-card:hover .company-title::after {
+    width: 100%;
 }
 
 .company-description {
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--gray-600);
+    transition: color 0.3s ease;
 }
 
-/* Responsive Design */
+.company-card:hover .company-description {
+    color: var(--gray-800);
+}
+
+/* Mobile Animation Optimization */
 @media (max-width: 968px) {
     .services-master-card {
         padding: var(--spacing-xl);
-    }
-
-    .companies-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
     }
 }
 
 @media (max-width: 640px) {
     .companies {
-        padding: var(--spacing-2xl) 0;
+        padding: var(--spacing-xl) 0;
     }
 
     .services-master-card {
@@ -71,18 +113,41 @@
     }
 
     .companies-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-sm);
+        column-gap: var(--spacing-md);
     }
 
     .company-card {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
+    }
+
+    /* Subtle touch feedback on mobile instead of full hover */
+    .company-card:active {
+        transform: scale(0.98);
+        background: rgba(79, 70, 229, 0.05);
     }
 
     .company-title {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-sm);
+        font-weight: 800;
+        margin-bottom: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .company-title::after {
+        width: 20px;
+        height: 1.5px;
+    }
+
+    .company-card:hover .company-title::after,
+    .company-card:active .company-title::after {
+        width: 40px;
+        /* Don't expand fully on mobile to save space */
     }
 
     .company-description {
-        font-size: var(--font-size-sm);
+        font-size: 0.7rem;
+        line-height: 1.3;
     }
 }

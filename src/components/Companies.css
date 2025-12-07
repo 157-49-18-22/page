@@ -19,6 +19,7 @@
 .carousel-viewport {
     overflow: hidden;
     width: 100%;
+    flex: 1;
     margin: 0;
     /* Add padding to show shadows without clipping */
     padding: 20px 0;
@@ -37,7 +38,7 @@
 
 /* Individual Slide Item */
 .carousel-item {
-    padding: 0 12px;
+    padding: 0 20px;
     /* Gap between cards */
     box-sizing: border-box;
 }
@@ -164,11 +165,11 @@
 }
 
 .carousel-button.prev {
-    margin-right: -24px;
+    margin-right: 12px;
 }
 
 .carousel-button.next {
-    margin-left: -24px;
+    margin-left: 12px;
 }
 
 .carousel-button svg {
@@ -218,8 +219,31 @@
     }
 
     .carousel-button {
-        display: none;
-        /* Hide arrows on mobile, rely on swipe/dots */
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-button.prev {
+        left: 4px;
+        margin-right: 0;
+    }
+
+    .carousel-button.next {
+        right: 4px;
+        margin-left: 0;
+    }
+
+    .carousel-button svg {
+        width: 20px;
+        height: 20px;
     }
 
     .company-card {

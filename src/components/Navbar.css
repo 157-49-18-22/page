@@ -258,18 +258,18 @@
             rgba(147, 51, 234, 0.05) 100%);
     border: 1.5px solid rgba(59, 130, 246, 0.2);
     color: var(--white);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 1rem 1.25rem;
-    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     text-align: left;
     position: relative;
     overflow: hidden;
     letter-spacing: 0.3px;
     box-shadow:
-        0 4px 15px rgba(59, 130, 246, 0.1),
+        0 2px 10px rgba(59, 130, 246, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -427,7 +427,7 @@
 
 @media (max-width: 480px) {
     .navbar-container {
-        padding: 6px var(--spacing-sm);
+        padding: 11px var(--spacing-sm);
     }
 
     .brand-logo {
@@ -443,7 +443,7 @@
     }
 
     .mobile-menu {
-        margin-top: -25px;
+        margin-top: -16px;
         width: 60vw;
         max-width: none;
         min-width: 200px;

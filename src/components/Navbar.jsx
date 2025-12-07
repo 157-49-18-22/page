@@ -3,6 +3,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,6 +19,11 @@ const Navbar = () => {
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
+        setMobileMenuOpen(false);
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
     };
 
     return (
@@ -28,10 +34,31 @@ const Navbar = () => {
                     <span className="brand-logo">MAYDIV</span>
                 </div>
 
-                <div className="navbar-links">
+                {/* Desktop Navigation */}
+                <div className="navbar-links desktop-nav">
                     <button onClick={() => scrollToSection('about')} className="nav-link">About</button>
                     <button onClick={() => scrollToSection('services')} className="nav-link">Services</button>
                     <button onClick={() => scrollToSection('contact')} className="nav-link">Contact</button>
+                </div>
+
+                {/* Mobile Hamburger Menu */}
+                <button
+                    className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+                    onClick={toggleMobileMenu}
+                    aria-label="Toggle menu"
+                >
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
+                <div className="mobile-menu-links">
+                    <button onClick={() => scrollToSection('about')} className="mobile-nav-link">About</button>
+                    <button onClick={() => scrollToSection('services')} className="mobile-nav-link">Services</button>
+                    <button onClick={() => scrollToSection('contact')} className="mobile-nav-link">Contact</button>
                 </div>
             </div>
         </nav>

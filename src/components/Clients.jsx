@@ -7,12 +7,12 @@ const Clients = () => {
         { name: 'TMSquare', logo: '/TM.png', isImage: true },
         { name: 'JK Homes', logo: '/JK.png', isImage: true },
         { name: 'Fika', logo: '/Fika.png', isImage: true },
-        { name: 'DrSquare', logo: '/Dr.png', isImage: true },
+        { name: 'DrQure', logo: '/Dr.png', isImage: true },
         { name: 'IDFC', logo: '/Idfc.png', isImage: true },
         { name: 'Melanie', logo: '/Melanie.png', isImage: true },
         { name: 'Tech9', logo: '/Tech9.jpg', isImage: true },
         { name: 'Tvara', logo: '/Tvara.png', isImage: true },
-        { name: 'Magad University', logo: '/Magad.png', isImage: true },
+        { name: 'Magadh University Info', logo: '/Magad.png', isImage: true },
         { name: 'NTPC', logo: '/Ntpc.png', isImage: true }
     ];
 

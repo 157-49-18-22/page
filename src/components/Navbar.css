@@ -1,0 +1,130 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    transition: all var(--transition-base);
+    padding: var(--spacing-lg) 0;
+}
+
+.navbar-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md) 0;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.brand-logo {
+    font-size: var(--font-size-2xl);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 1px;
+    transition: color var(--transition-base);
+}
+
+.navbar-scrolled .brand-logo {
+    color: var(--primary-blue);
+}
+
+.brand-logo-img {
+    height: 45px;
+    width: auto;
+    transition: all var(--transition-base);
+    filter: brightness(0) invert(1);
+}
+
+.navbar-scrolled .brand-logo-img {
+    height: 38px;
+    filter: none;
+}
+
+.navbar-links {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--white);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.navbar-scrolled .nav-link {
+    color: var(--gray-700);
+}
+
+.navbar-scrolled .nav-link::after {
+    background: var(--primary-blue);
+}
+
+.nav-link:hover {
+    color: var(--gray-100);
+}
+
+.navbar-scrolled .nav-link:hover {
+    color: var(--primary-blue);
+    background: var(--gray-100);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-links {
+        gap: var(--spacing-md);
+    }
+
+    .nav-link {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs);
+    }
+
+    .brand-logo {
+        font-size: var(--font-size-xl);
+    }
+
+    .brand-logo-img {
+        height: 35px;
+    }
+
+    .navbar-scrolled .brand-logo-img {
+        height: 30px;
+    }
+}

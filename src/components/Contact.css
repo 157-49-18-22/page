@@ -18,7 +18,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    background: linear-gradient(90deg, #FF3BFF, #ECBFBF, #5C24FF, #D94FD5, #FF3BFF);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
 }
 
 .contact-container {
@@ -115,7 +117,8 @@
 }
 
 .form-submit {
-    background: var(--primary-blue);
+    background: linear-gradient(90deg, #FF3BFF, #5C24FF, #D94FD5);
+    background-size: 200% 200%;
     color: var(--white);
     font-size: var(--font-size-lg);
     font-weight: 600;
@@ -128,7 +131,7 @@
 }
 
 .form-submit:hover {
-    background: var(--primary-blue-dark);
+    background-position: 100% 50%;
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
 }

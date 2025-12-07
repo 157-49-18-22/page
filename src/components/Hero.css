@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: var(--spacing-2xl) 0;
+    padding: calc(80px + var(--spacing-2xl)) 0 var(--spacing-2xl) 0;
 }
 
 .hero-background {
@@ -22,8 +22,24 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #4F46E5 100%);
+    background: linear-gradient(90deg, #FF3BFF, #ECBFBF, #5C24FF, #D94FD5, #FF3BFF);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
     opacity: 1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .hero-pattern {
@@ -72,9 +88,9 @@
 
 .hero-cta {
     background-color: var(--white);
-    color: var(--primary-blue);
+    color: #5C24FF;
     font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-weight: 700;
     padding: var(--spacing-md) var(--spacing-xl);
     border: none;
     border-radius: var(--radius-lg);
@@ -88,7 +104,8 @@
 .hero-cta:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-2xl);
-    background-color: var(--gray-50);
+    background: linear-gradient(90deg, #FF3BFF, #5C24FF);
+    color: var(--white);
 }
 
 .hero-cta:active {

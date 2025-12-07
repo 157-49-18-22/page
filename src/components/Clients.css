@@ -1,0 +1,416 @@
+/* Clients Section - Carousel Layout */
+.clients {
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+    padding: var(--spacing-3xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.clients::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    opacity: 0.3;
+}
+
+.clients .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.clients .section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-2xl);
+    font-weight: 400;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    cursor: grab;
+}
+
+.carousel-track:active {
+    cursor: grabbing;
+}
+
+/* Individual Carousel Item */
+.carousel-item {
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Client Card */
+.client-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gradient border effect on hover */
+.client-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-xl);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.client-card:hover::before {
+    opacity: 1;
+}
+
+.client-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.15),
+        0 10px 10px -5px rgba(99, 102, 241, 0.08);
+    border-color: transparent;
+}
+
+/* Client Logo */
+.client-logo {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0.3);
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+}
+
+.client-card:hover .client-logo {
+    transform: scale(1.15) rotate(5deg);
+    filter: grayscale(0);
+}
+
+.client-card:hover .client-logo img {
+    filter: grayscale(0);
+}
+
+/* Client Name */
+.client-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.client-card:hover .client-name {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-button {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.carousel-button:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.1);
+}
+
+.carousel-button.prev {
+    margin-right: 12px;
+}
+
+.carousel-button.next {
+    margin-left: 12px;
+}
+
+.carousel-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+    gap: 8px;
+}
+
+.indicator-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--gray-300);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.indicator-dot.active {
+    background-color: var(--primary-blue);
+    width: 30px;
+    border-radius: 10px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .clients {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .clients .section-title {
+        font-size: 2rem;
+        padding: 0 var(--spacing-md);
+    }
+
+    .clients .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xl);
+        padding: 0 var(--spacing-md);
+    }
+
+    .carousel-wrapper {
+        padding: 0;
+    }
+
+    .carousel-viewport {
+        padding: 20px 10px;
+    }
+
+    .carousel-item {
+        padding: 0 12px;
+    }
+
+    .carousel-button {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel-button.prev {
+        left: 8px;
+        margin-right: 0;
+    }
+
+    .carousel-button.next {
+        right: 8px;
+        margin-left: 0;
+    }
+
+    .carousel-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .client-card {
+        padding: var(--spacing-xl) var(--spacing-md);
+        min-height: 200px;
+    }
+
+    .client-logo {
+        font-size: 3rem;
+        margin-bottom: var(--spacing-md);
+        width: 100px;
+        height: 100px;
+    }
+
+    .client-name {
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+
+    .carousel-indicators {
+        margin-top: var(--spacing-lg);
+        gap: 6px;
+    }
+
+    .indicator-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .indicator-dot.active {
+        width: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clients {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .clients .section-title {
+        font-size: 1.75rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .clients .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .carousel-viewport {
+        padding: 15px 5px;
+    }
+
+    .carousel-item {
+        padding: 0 8px;
+    }
+
+    .carousel-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-button.prev {
+        left: 4px;
+    }
+
+    .carousel-button.next {
+        right: 4px;
+    }
+
+    .carousel-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .client-card {
+        padding: var(--spacing-lg) var(--spacing-sm);
+        min-height: 180px;
+    }
+
+    .client-logo {
+        font-size: 2.5rem;
+        width: 80px;
+        height: 80px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .client-name {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .carousel-indicators {
+        margin-top: var(--spacing-md);
+        gap: 5px;
+    }
+
+    .indicator-dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .indicator-dot.active {
+        width: 20px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .clients .section-title {
+        font-size: 1.5rem;
+    }
+
+    .client-card {
+        padding: var(--spacing-md);
+        min-height: 160px;
+    }
+
+    .client-logo {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .client-name {
+        font-size: 0.9rem;
+    }
+}

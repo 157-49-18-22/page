@@ -5,6 +5,11 @@ const Hero = () => {
     return (
         <section className="hero">
             <div className="hero-background">
+                <img
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop"
+                    alt="Business Meeting"
+                    className="hero-bg-image"
+                />
                 <div className="hero-gradient"></div>
                 <div className="hero-pattern"></div>
             </div>

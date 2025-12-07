@@ -14,6 +14,10 @@
     width: 100%;
     height: 100%;
     z-index: 0;
+    background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=1080&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-gradient {
@@ -22,24 +26,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #FF3BFF, #ECBFBF, #5C24FF, #D94FD5, #FF3BFF);
-    background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.3) 0%, rgba(124, 58, 237, 0.3) 100%);
     opacity: 1;
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .hero-pattern {
@@ -88,9 +76,9 @@
 
 .hero-cta {
     background-color: var(--white);
-    color: #5C24FF;
+    color: var(--primary-blue);
     font-size: var(--font-size-lg);
-    font-weight: 700;
+    font-weight: 600;
     padding: var(--spacing-md) var(--spacing-xl);
     border: none;
     border-radius: var(--radius-lg);
@@ -104,8 +92,7 @@
 .hero-cta:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-2xl);
-    background: linear-gradient(90deg, #FF3BFF, #5C24FF);
-    color: var(--white);
+    background-color: var(--gray-50);
 }
 
 .hero-cta:active {
@@ -174,30 +161,43 @@
 @media (max-width: 640px) {
     .hero {
         min-height: auto;
-        padding: var(--spacing-3xl) 0;
+        padding: calc(70px + var(--spacing-xl)) 0 var(--spacing-xl) 0;
+    }
+
+    .hero-container {
+        gap: var(--spacing-xl);
     }
 
     .hero-title {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-2xl);
+        line-height: 1.2;
     }
 
     .hero-subtitle {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-cta {
         font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        width: 100%;
+        max-width: 200px;
     }
 
     .hero-card {
-        padding: var(--spacing-xl);
+        padding: var(--spacing-lg);
     }
 
     .hero-card-name {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
     }
 
     .hero-card-title {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-base);
     }
 
     .hero-card-company {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-sm);
     }
 }

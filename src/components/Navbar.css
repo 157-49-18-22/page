@@ -12,9 +12,11 @@
 }
 
 .navbar-scrolled {
-    background: #000000;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--gray-200);
     padding: var(--spacing-sm) 0;
 }
 
@@ -39,7 +41,7 @@
 }
 
 .navbar-scrolled .brand-logo {
-    color: var(--white);
+    color: var(--primary-blue);
 }
 
 .brand-logo-img {
@@ -106,24 +108,47 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        padding: var(--spacing-sm) 0;
+    }
+
     .navbar-links {
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
 
     .nav-link {
-        font-size: var(--font-size-sm);
-        padding: var(--spacing-xs);
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 
     .brand-logo {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-lg);
     }
 
     .brand-logo-img {
-        height: 35px;
+        height: 30px;
     }
 
     .navbar-scrolled .brand-logo-img {
-        height: 30px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .brand-logo {
+        font-size: var(--font-size-base);
+    }
+
+    .brand-logo-img {
+        height: 25px;
+    }
+
+    .nav-link {
+        font-size: 0.7rem;
+        padding: var(--spacing-xs);
     }
 }

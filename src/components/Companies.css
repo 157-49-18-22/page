@@ -72,3 +72,25 @@
         font-size: var(--font-size-xl);
     }
 }
+
+@media (max-width: 640px) {
+    .companies {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .companies-grid {
+        gap: var(--spacing-md);
+    }
+
+    .company-card {
+        padding: var(--spacing-lg);
+    }
+
+    .company-title {
+        font-size: var(--font-size-lg);
+    }
+
+    .company-description {
+        font-size: var(--font-size-sm);
+    }
+}

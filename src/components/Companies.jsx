@@ -50,17 +50,19 @@ const Companies = () => {
             <div className="container">
                 <h2 className="section-title">Our Services</h2>
 
-                <div className="companies-grid">
-                    {companies.map((company, index) => (
-                        <div
-                            key={index}
-                            className="company-card"
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                        >
-                            <h3 className="company-title">{company.title}</h3>
-                            <p className="company-description">{company.description}</p>
-                        </div>
-                    ))}
+                <div className="services-master-card">
+                    <div className="companies-grid">
+                        {companies.map((company, index) => (
+                            <div
+                                key={index}
+                                className="company-card"
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                                <h3 className="company-title">{company.title}</h3>
+                                <p className="company-description">{company.description}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

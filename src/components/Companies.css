@@ -1,54 +1,45 @@
 .companies {
-    background-color: var(--white);
+    background-color: var(--gray-50);
+}
+
+.services-master-card {
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-3xl);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gray-100);
 }
 
 .companies-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-xl);
-    margin-top: var(--spacing-2xl);
 }
 
 .company-card {
-    background: var(--white);
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-100);
     transition: all var(--transition-base);
+    background: var(--gray-50);
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
-    position: relative;
-    overflow: hidden;
-}
-
-.company-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-base);
-}
-
-.company-card:hover::before {
-    transform: scaleX(1);
 }
 
 .company-card:hover {
-    transform: translateY(-8px);
+    background: var(--white);
     border-color: var(--primary-blue);
-    box-shadow: var(--shadow-2xl);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .company-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--gray-900);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .company-description {
@@ -59,17 +50,13 @@
 
 /* Responsive Design */
 @media (max-width: 968px) {
-    .companies-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    .company-card {
+    .services-master-card {
         padding: var(--spacing-xl);
     }
 
-    .company-title {
-        font-size: var(--font-size-xl);
+    .companies-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
 }
 
@@ -78,12 +65,17 @@
         padding: var(--spacing-2xl) 0;
     }
 
+    .services-master-card {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-xl);
+    }
+
     .companies-grid {
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
     }
 
     .company-card {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
     }
 
     .company-title {

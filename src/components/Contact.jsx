@@ -42,9 +42,7 @@ const Contact = () => {
                         <div className="contact-detail">
                             <strong>Phone:</strong> +91 - 80770 06580
                         </div>
-                        <div className="contact-detail">
-                            <strong>Company:</strong> MAYDIV
-                        </div>
+
                         <div className="contact-detail">
                             <strong>Location:</strong> SCO 105, Second Floor, Omaxe World Street, Faridabad, Haryana - 121004
                         </div>

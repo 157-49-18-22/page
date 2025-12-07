@@ -427,7 +427,7 @@
 
 @media (max-width: 480px) {
     .navbar-container {
-        padding: 0 var(--spacing-sm);
+        padding: 6px var(--spacing-sm);
     }
 
     .brand-logo {
@@ -443,7 +443,7 @@
     }
 
     .mobile-menu {
-        margin-top: -37px;
+        margin-top: -25px;
         width: 60vw;
         max-width: none;
         min-width: 200px;

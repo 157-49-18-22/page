@@ -2,6 +2,16 @@ import React from 'react';
 import './Hero.css';
 
 const Hero = () => {
+    const handleScrollToContact = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <section className="hero">
             <div className="hero-background">
@@ -22,7 +32,11 @@ const Hero = () => {
                     <p className="hero-subtitle animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                         I help businesses scale revenue, build partnerships, and unlock new market opportunities.
                     </p>
-                    <button className="hero-cta animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                    <button
+                        className="hero-cta animate-fade-in-up"
+                        style={{ animationDelay: '0.4s' }}
+                        onClick={handleScrollToContact}
+                    >
                         Get in Touch
                     </button>
                 </div>

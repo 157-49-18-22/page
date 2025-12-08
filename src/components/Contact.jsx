@@ -9,6 +9,8 @@ const Contact = () => {
         message: ''
     });
 
+    const [status, setStatus] = useState('');
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -16,12 +18,35 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setStatus('sending');
+
+        try {
+            const response = await fetch('https://formspree.io/f/meoylgrv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                alert('Message sent successfully! We will get back to you soon.');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setStatus(''), 3000);
+            } else {
+                setStatus('error');
+                alert('Failed to send message. Please try again.');
+                setTimeout(() => setStatus(''), 3000);
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('error');
+            alert('An error occurred. Please try again later.');
+            setTimeout(() => setStatus(''), 3000);
+        }
     };
 
     return (
@@ -92,8 +117,12 @@ const Contact = () => {
                             required
                         ></textarea>
 
-                        <button type="submit" className="form-submit">
-                            Submit
+                        <button
+                            type="submit"
+                            className="form-submit"
+                            disabled={status === 'sending'}
+                        >
+                            {status === 'sending' ? 'Sending...' : 'Submit'}
                         </button>
                     </form>
                 </div>
